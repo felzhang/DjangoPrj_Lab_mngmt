@@ -30,8 +30,8 @@
             <td>{{ asik.gps_id }}</td>
             <td>{{ asik.owner }}</td>
             <!--超链接中直接转到其他url-->
+                <!--https://blog.csdn.net/JavaLixy/article/details/78207442-->
                 <!--href后面是目标地址-->
-                <!--template中可以用 {% url  ‘app_name : url_name’   param %}-->
                 <!--app_name：应用命名空间的名称-->
                 <!--url_name：链接名-->
                 <!--param：地址的参数-->
@@ -39,6 +39,7 @@
             <td><a href="{% url 'lab:asik_delete' asik.id %}" onclick="return confirm('确定删除吗？')">删除</a> </td>
         </tr>
         {% endfor %}
+        <tr><a href="{% url 'lab:asik_add' %}">新增</a></tr>
     </table>
     </div>
 </div>

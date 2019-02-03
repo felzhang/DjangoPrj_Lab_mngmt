@@ -38,3 +38,14 @@ def lab_asik_delete(request, asik_id):
     asik = get_object_or_404(Asik, id=asik_id)
     asik.delete()
     return HttpResponseRedirect(reverse("lab:ASIK"))
+
+def lab_asik_add(request):
+    asik_form = AsikForm()
+    if request.method == "POST":
+        asik_form = AsikForm(request.POST)
+        if asik_form.is_valid():
+            data = asik_form.cleaned_data
+            print(data)
+            asik_form.save()
+            return HttpResponseRedirect(reverse("lab:ASIK"))
+    return render(request, "lab/asik_detail_form.html", {"asik_form":asik_form})
