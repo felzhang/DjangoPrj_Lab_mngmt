@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}asiks{% endblock %}
+{% block content %}
+<div class="row text-center vertical-middle-sm">
+    <h1>ASIK 列表</h1>
+</div>
+<div class="container">
+    <table class="table table-hover">
+        <tr>
+            <td>ASIK_ID</td>
+            <td>ETH_IP</td>
+            <td>LMP_IP</td>
+            <td>类型</td>
+            <td>序列号</td>
+            <td>槽位号</td>
+            <td>GPS_ID</td>
+            <td>OWNER</td>
+        </tr>
+        {% for asik in asiks %}
+        <tr>
+            <!--  <a href="{{ asik.id }}"> 是相对路径，实际url http://172.17.0.1:8081/lab/asik/1/ -->
+            <!--  <a href="/{{ asik.id }}"> 是绝对路径，实际url http://172.17.0.1:8081/1/ -->
+            <!--后面 / 可加可不加，即 <a href="{{ asik.id }}"> 与 <a href="{{ asik.id }}/">效果是一样的。会自动加上-->
+            <td><a href="{{ asik.id }}">{{ asik.id }}</a></td>
+            <td>{{ asik.eth_ip }}</td>
+            <td>{{ asik.lmp_eth_ip }}</td>
+            <td>{{ asik.serial_type }}</td>
+            <td>{{ asik.pn_num }}</td>
+            <td>{{ asik.slot }}</td>
+            <td>{{ asik.gps_id }}</td>
+            <td>{{ asik.owner }}</td>
+            <!--超链接中直接转到其他url-->
+                <!--href后面是目标地址-->
+                <!--template中可以用 {% url  ‘app_name : url_name’   param %}-->
+                <!--app_name：应用命名空间的名称-->
+                <!--url_name：链接名-->
+                <!--param：地址的参数-->
+                <!--app_name与根目录下的urls.py中的namespace对应，url_name 与app中的urls.py中的name对应-->
+            <td><a href="{% url 'lab:asik_delete' asik.id %}" onclick="return confirm('确定删除吗？')">删除</a> </td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+</div>
+{% endblock %}

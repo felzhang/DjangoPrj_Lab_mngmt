@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}classicalBTS{% endblock %}
+{% block content %}
+<div class="row text-center vertical-middle-sm">
+    <h1>ClassicalBTS 列表</h1>
+</div>
+<div class="container">
+    <table class="table table-hover">
+        <tr>
+            <td>ID</td>
+            <td>ASIK_ID</td>
+            <td>ABIL_ID</td>
+            <td>OWNER</td>
+        </tr>
+        {% for classicalbts in classicalbtss %}
+        <tr>
+            <td>{{ classicalbts.id }}</td>
+            <td>{{ classicalbts.asik_id }}</td>
+            <td>{{ classicalbts.abil_id }}</td>
+            <td>{{ classicalbts.owner }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+</div>
+{% endblock %}

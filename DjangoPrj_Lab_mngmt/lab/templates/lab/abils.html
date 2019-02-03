@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}abils{% endblock %}
+{% block content %}
+<div class="row text-center vertical-middle-sm">
+    <h1>ABIL 列表</h1>
+</div>
+<div class="container">
+    <table class="table table-hover">
+        <tr>
+            <td>ID</td>
+            <td>类型</td>
+            <td>序列号</td>
+            <td>槽位号</td>
+            <td>OWNER</td>
+        </tr>
+        {% for abil in abils %}
+        <tr>
+            <td>{{ abil.id }}</td>
+            <td>{{ abil.serial_type }}</td>
+            <td>{{ abil.pn_num }}</td>
+            <td>{{ abil.slot }}</td>
+            <td>{{ abil.owner }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+</div>
+{% endblock %}
