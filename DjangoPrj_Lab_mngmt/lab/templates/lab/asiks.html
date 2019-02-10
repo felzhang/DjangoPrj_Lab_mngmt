@@ -15,6 +15,7 @@
             <td>槽位号</td>
             <td>GPS_ID</td>
             <td>OWNER</td>
+            <td>操作</td>
         </tr>
         {% for asik in asiks %}
         <tr>
@@ -23,9 +24,9 @@
             <!--后面 / 可加可不加，即 <a href="{{ asik.id }}"> 与 <a href="{{ asik.id }}/">效果是一样的。会自动加上-->
             <td><a href="{{ asik.id }}">{{ asik.id }}</a></td>
             <td>{{ asik.eth_ip }}</td>
-            <td>{{ asik.lmp_eth_ip }}</td>
-            <td>{{ asik.serial_type }}</td>
-            <td>{{ asik.pn_num }}</td>
+            <td>{{ asik.lmp_ip }}</td>
+            <td>{{ asik.pn }}</td>
+            <td>{{ asik.serial_num }}</td>
             <td>{{ asik.slot }}</td>
             <td>{{ asik.gps_id }}</td>
             <td>{{ asik.owner }}</td>
