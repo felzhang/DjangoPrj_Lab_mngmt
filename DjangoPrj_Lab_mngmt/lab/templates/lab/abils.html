@@ -7,21 +7,26 @@
 <div class="container">
     <table class="table table-hover">
         <tr>
-            <td>ID</td>
+            <td>ABIL_id</td>
             <td>类型</td>
             <td>序列号</td>
-            <td>槽位号</td>
+            <td>SLOT</td>
+            <td>RRU_id</td>
             <td>OWNER</td>
+            <td>操作</td>
         </tr>
         {% for abil in abils %}
         <tr>
-            <td>{{ abil.id }}</td>
-            <td>{{ abil.serial_type }}</td>
-            <td>{{ abil.pn_num }}</td>
+            <td><a href="{{ abil.id }}">{{ abil.id }}</a></td>
+            <td>{{ abil.pn }}</td>
+            <td>{{ abil.sn }}</td>
             <td>{{ abil.slot }}</td>
+            <td><a href="{% url 'lab:rru_detail_form' abil.rru_id %}">{{ abil.rru_id }}</a></td>
             <td>{{ abil.owner }}</td>
+            <td><a href="{% url 'lab:abil_delete' abil.id %}" onclick="return confirm('确定删除吗？')">删除</a></td>
         </tr>
         {% endfor %}
+        <tr><a href="{% url 'lab:abil_add' %}">新增</a></tr>
     </table>
     </div>
 </div>

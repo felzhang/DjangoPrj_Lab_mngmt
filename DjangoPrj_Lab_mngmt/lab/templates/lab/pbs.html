@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}pbs{% endblock %}
+{% block content %}
+<div class="row text-center vertical-middle-sm">
+    <h1>PB 列表</h1>
+</div>
+<div class="container">
+    <table class="table table-hover">
+        <tr>
+            <td>PB_id</td>
+            <td>IP</td>
+            <td>序列号</td>
+            <td>OWNER</td>
+            <td>操作</td>
+        </tr>
+        {% for pb in pbs %}
+        <tr>
+            <td><a href="{{ pb.id }}">{{ pb.id }}</a></td>
+            <td>{{ pb.ip }}</td>
+            <td>{{ pb.sn }}</td>
+            <td>{{ pb.owner }}</td>
+            <td><a href="{% url 'lab:pb_delete' pb.id %}" onclick="return confirm('确定删除吗？')">删除</a></td>
+        </tr>
+        {% endfor %}
+        <tr><a href="{% url 'lab:pb_add' %}">新增</a></tr>
+    </table>
+    </div>
+</div>
+{% endblock %}

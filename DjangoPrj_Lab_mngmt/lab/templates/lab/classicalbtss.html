@@ -7,20 +7,30 @@
 <div class="container">
     <table class="table table-hover">
         <tr>
-            <td>ID</td>
-            <td>ASIK_ID</td>
-            <td>ABIL_ID</td>
+            <td>BTS_id</td>
+            <td>AMIA_id</td>
+            <td>ASIK_id</td>
+            <td>ABIL_id</td>
+            <td>PB_info</td>
+            <td>位置</td>
+            <td>TAG</td>
             <td>OWNER</td>
+            <td>操作</td>
         </tr>
         {% for classicalbts in classicalbtss %}
         <tr>
-            <td>{{ classicalbts.id }}</td>
-            <td>{{ classicalbts.asik_id }}</td>
-            <td>{{ classicalbts.abil_id }}</td>
+            <td><a href="{{ classicalbts.id }}">{{ classicalbts.id }}</a></td>
+            <td><a href="{% url 'lab:amia_detail_form' classicalbts.amia_id %}">{{ classicalbts.amia_id }}</a></td>
+            <td><a href="{% url 'lab:asik_detail_form' classicalbts.asik_id %}">{{ classicalbts.asik_id }}</a></td>
+            <td><a href="{% url 'lab:abil_detail_form' classicalbts.abil_id %}">{{ classicalbts.abil_id }}</a></td>
+            <td><span>id: <a href="{% url 'lab:pb_detail_form' classicalbts.pb_id %}">{{ classicalbts.pb_id }}</a></span><span>  &  port: {{ classicalbts.pb_port }}</span></td>
+            <td>{{ classicalbts.location }}</td>
+            <td>{{ classicalbts.tag }}</td>
             <td>{{ classicalbts.owner }}</td>
+            <td><a href="{% url 'lab:classicalbts_delete' classicalbts.id %}" onclick="return confirm('确定删除吗？')">删除</a> </td>
         </tr>
         {% endfor %}
+        <tr><a href="{% url 'lab:classicalbts_add' %}">新增</a></tr>
     </table>
-    </div>
 </div>
 {% endblock %}
