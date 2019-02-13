@@ -28,7 +28,15 @@
             <td>{{ asik.pn }}</td>
             <td>{{ asik.sn }}</td>
             <td>{{ asik.slot }}</td>
-            <td><a href="{% url 'lab:gps_detail_form' asik.gps_id %}">{{ asik.gps_id }}</a></td>
+            <td>
+                <!--在django模板中，可以应用if else语法-->
+                {% if asik.gps_id %}
+                    <!--如果asik.gps_id为None， 超链接无法作为传参，非法值。    -->
+                    <a href="{% url 'lab:gps_detail_form' asik.gps_id %}">{{ asik.gps_id }}</a>
+                {% else %}
+                    {{ asik.gps_id }}
+                {% endif %}
+            </td>
             <td>{{ asik.owner }}</td>
             <!--超链接中直接转到其他url-->
                 <!--https://blog.csdn.net/JavaLixy/article/details/78207442-->

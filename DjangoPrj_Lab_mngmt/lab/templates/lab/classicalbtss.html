@@ -20,9 +20,27 @@
         {% for classicalbts in classicalbtss %}
         <tr>
             <td><a href="{{ classicalbts.id }}">{{ classicalbts.id }}</a></td>
-            <td><a href="{% url 'lab:amia_detail_form' classicalbts.amia_id %}">{{ classicalbts.amia_id }}</a></td>
-            <td><a href="{% url 'lab:asik_detail_form' classicalbts.asik_id %}">{{ classicalbts.asik_id }}</a></td>
-            <td><a href="{% url 'lab:abil_detail_form' classicalbts.abil_id %}">{{ classicalbts.abil_id }}</a></td>
+            <td>
+                {% if classicalbts.amia_id %}
+                    <a href="{% url 'lab:amia_detail_form' classicalbts.amia_id %}">{{ classicalbts.amia_id }}</a>
+                {% else %}
+                    {{ classicalbts.amia_id }}
+                {% endif %}
+            </td>
+            <td>
+                {% if classicalbts.asik_id %}
+                    <a href="{% url 'lab:asik_detail_form' classicalbts.asik_id %}">{{ classicalbts.asik_id }}</a>
+                {% else %}
+                    {{ classicalbts.asik_id }}
+                {% endif %}
+            </td>
+            <td>
+                {% if classicalbts.abil_id %}
+                    <a href="{% url 'lab:abil_detail_form' classicalbts.abil_id %}">{{ classicalbts.abil_id }}</a>
+                {% else %}
+                    {{ classicalbts.abil_id }}
+                {% endif %}
+            </td>
             <td><span>id: <a href="{% url 'lab:pb_detail_form' classicalbts.pb_id %}">{{ classicalbts.pb_id }}</a></span><span>  &  port: {{ classicalbts.pb_port }}</span></td>
             <td>{{ classicalbts.location }}</td>
             <td>{{ classicalbts.tag }}</td>

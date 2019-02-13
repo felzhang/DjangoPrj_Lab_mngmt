@@ -21,7 +21,13 @@
             <td>{{ abil.pn }}</td>
             <td>{{ abil.sn }}</td>
             <td>{{ abil.slot }}</td>
-            <td><a href="{% url 'lab:rru_detail_form' abil.rru_id %}">{{ abil.rru_id }}</a></td>
+            <td>
+                {% if abil.rru_id %}
+                    <a href="{% url 'lab:rru_detail_form' abil.rru_id %}">{{ abil.rru_id }}</a>
+                {% else %}
+                    {{ abil.rru_id }}
+                {% endif %}
+            </td>
             <td>{{ abil.owner }}</td>
             <td><a href="{% url 'lab:abil_delete' abil.id %}" onclick="return confirm('确定删除吗？')">删除</a></td>
         </tr>
